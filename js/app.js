@@ -79,7 +79,7 @@ async function initMap() {
         mapaDepartamento.setMap(null)
         poligonoDepartamento = []
 
-        let innerCoords1 = [];
+        let coordenadas = [];
 
         const departamento = browser.value;
         casosCovid(departamento);
@@ -96,13 +96,13 @@ async function initMap() {
                 }
 
                 item.geometry.coordinates[0].forEach(item => {
-                    innerCoords1.push({ lat: parseFloat(item[1]), lng: parseFloat(item[0]) })
+                    coordenadas.push({ lat: parseFloat(item[1]), lng: parseFloat(item[0]) })
                 });
 
-                poligonoDepartamento.push(innerCoords1)
-                innerCoords1 = [];
+                poligonoDepartamento.push(coordenadas)
+                coordenadas = [];
             }
-            if (departamento == 'COLOMBIA') {
+            if (departamento == 'COLOMBIA' || departamento == '') {
                 mapaColombia.setMap(map)
                 mapaDepartamento.setMap(null)
                 poligonoDepartamento = []
@@ -198,22 +198,26 @@ function individualDepartamentChoice(event) {
 //=======================================================//
 
 function casosCovid(departamento) {
+    
     let activos = 0;
     let recuperados = 0;
     let mortales = 0;
     let totales = 0;
+    let fechaRecuperado = '--';
     reporteCovid.forEach(item => {
         if (item.departamento_nom == departamento) {
             totales++;
             item.recuperado == 'Recuperado' ? recuperados++ : recuperados += 0;
             item.recuperado == 'Fallecido' ? mortales++ : mortales += 0;
             item.recuperado == 'N/A' ? activos++ : activos += 0;
+            fechaRecuperado = item.fecha_recuperado;
         }
     });
     document.getElementById('recuperados').innerHTML = recuperados;
     document.getElementById('mortales').innerHTML = mortales;
     document.getElementById('activos').innerHTML = activos;
     document.getElementById('totales').innerHTML = totales;
+    document.getElementById('fecharecuperado').innerHTML = fechaRecuperado;
 
 }
 

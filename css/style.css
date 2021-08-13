@@ -64,3 +64,7 @@
           .texto {
               padding-left: 8px;
           }
+
+          .gris-claro {
+            color: #bbb;
+          }
