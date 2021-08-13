@@ -55,6 +55,9 @@ async function initMap() {
     mapaColombia.loadGeoJson(
         "https://gist.githubusercontent.com/john-guerra/43c7656821069d00dcbc/raw/3aadedf47badbdac823b00dbe259f6bc6d9e1899/colombia.geo.json"
     );
+    mapaColombia.setStyle({    
+        fillColor: 'rgb(19, 108, 224)'
+    });
     mapaColombia.setMap(map)
     
 
