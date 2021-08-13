@@ -203,7 +203,7 @@ function casosCovid(departamento) {
     let recuperados = 0;
     let mortales = 0;
     let totales = 0;
-    let fechaRecuperado = '--';
+    let fechaRecuperado;
     reporteCovid.forEach(item => {
         if (item.departamento_nom == departamento) {
             totales++;
