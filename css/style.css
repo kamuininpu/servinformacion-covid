@@ -1,70 +1,72 @@
- 
-        
-       #map {
-            height: 100%;
-            width: 80vw;
-            margin-left: 0vw;
-        }
+ #map {
+   height: 100%;
+   width: 80vw;
+   margin-left: 0vw;
+ }
 
-        
-        html,
-        body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-        }
 
-        #info-box {
-            background-color: white;
-            border: 1px solid black;
-            bottom: 30px;
-            height: 20px;
-            padding: 10px;
-            position: absolute;
-            left: 30px;
-        }
+ html,
+ body {
+   height: 100%;
+   margin: 0;
+   padding: 0;
+   display: flex;
+   justify-content: center;
+ }
 
-        table {            
-            max-width: 30vw;
-            max-height: 30vh;
-        }
+ #info-box {
+   background-color: white;
+   border: 1px solid black;
+   bottom: 30px;
+   height: 20px;
+   padding: 10px;
+   position: absolute;
+   left: 30px;
+ }
 
-        .cifras {
-            float: right;
-        }
+ table {
+   max-width: 30vw;
+   max-height: 30vh;
+ }
 
-        #totales {
-            color: rgb(255, 102, 0);
-            font-weight: 700;
-            font-size: 30px;
-        }
+ .cifras {
+   float: right;
+ }
 
-        .dot {
-            height: 9px;
-            width: 9px;
-            background-color: #bbb;
-            border-radius: 50%;
-            display: inline-block;            
-          }
+ #totales {
+   color: rgb(255, 102, 0);
+   font-weight: 700;
+   font-size: 30px;
+ }
 
-          .green {
-            background-color: rgb(30, 168, 30);
-          }
+ .dot {
+   height: 9px;
+   width: 9px;
+   background-color: #bbb;
+   border-radius: 50%;
+   display: inline-block;
+ }
 
-          .yellow {
-            background-color: rgb(255, 208, 0);
-          }
+ #browsers {
+  max-width: 18vw;
+ }
 
-          .gray {
-            background-color: gray;
-          }
+ .green {
+   background-color: rgb(30, 168, 30);
+ }
 
-          .texto {
-              padding-left: 8px;
-          }
+ .yellow {
+   background-color: rgb(255, 208, 0);
+ }
 
-          .gris-claro {
-            color: #bbb;
-          }
+ .gray {
+   background-color: gray;
+ }
+
+ .texto {
+   padding-left: 8px;
+ }
+
+ .gris-claro {
+   color: #bbb;
+ }

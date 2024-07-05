@@ -11,16 +11,16 @@ let departamentos;
 let reporteCovid;
 
 (async () => {
-    const res = await fetch('https://gist.githubusercontent.com/john-guerra/43c7656821069d00dcbc/raw/3aadedf47badbdac823b00dbe259f6bc6d9e1899/colombia.geo.json')
+    const res = await fetch('json/colombia.geo.json')
     jsonColombia = await res.json();
     jsonColombia.features.forEach(element => {
-        browsers.innerHTML += `<option value="${element.properties.NOMBRE_DPT}">`;
+        browsers.innerHTML += `<option value="${element.properties.NOMBRE_DPT}">${element.properties.NOMBRE_DPT}</option>`;
     });
 })();
 
 
 (async () => {
-    const res = await fetch('https://www.datos.gov.co/resource/gt2j-8ykr.json');
+    const res = await fetch('json/gt2j-8ykr.json');
     reporteCovid = await res.json();    
 })();
 
@@ -53,7 +53,7 @@ async function initMap() {
     //crear objeto loadGeoJson
     mapaColombia = new google.maps.Data();
     mapaColombia.loadGeoJson(
-        "https://gist.githubusercontent.com/john-guerra/43c7656821069d00dcbc/raw/3aadedf47badbdac823b00dbe259f6bc6d9e1899/colombia.geo.json"
+        "json/colombia.geo.json"
     );
     mapaColombia.setStyle({    
         fillColor: 'rgb(19, 108, 224)'
@@ -73,7 +73,8 @@ async function initMap() {
         fillOpacity: 0.35,
     });
 
-    entrada.addEventListener('change', () => {
+    browsers.addEventListener('change', ($event) => {
+        
         infoWindow.close()
         mapaColombia.setMap(null)
         mapaDepartamento.setMap(null)
@@ -81,11 +82,12 @@ async function initMap() {
 
         let coordenadas = [];
 
-        const departamento = browser.value;
+        const departamento = $event.target.value;
         casosCovid(departamento);
 
         jsonColombia.features.forEach(item => {
             if (item.properties.NOMBRE_DPT == departamento) {
+                console.log(departamento);
                 propiedadesDepartamento = {
                     AREA: item.properties.AREA,
                     NOMBRE_DPT: item.properties.NOMBRE_DPT,
@@ -125,29 +127,29 @@ async function initMap() {
 //=================================================//
 
 function departamentChoice(event) {
-    
+    console.log(event.feature.Fg)
     const departamentFeatures = `
     <table class="table table-bordered">
         <tbody>                      
             <tr>
                 <th scope="row">DPTO</th>
-                <td>${event.feature.i.DPTO}</td>                                                          
+                <td>${event.feature.Fg.DPTO}</td>                                                          
             </tr>
             <tr>
                 <th scope="row">NOMBRE_DPT</th>
-                <td>${event.feature.i.NOMBRE_DPT}</td>                                                         
+                <td>${event.feature.Fg.NOMBRE_DPT}</td>                                                         
             </tr>
             <tr>
                 <th scope="row">AREA</th>
-                <td>${event.feature.i.AREA}</td>                                                           
+                <td>${event.feature.Fg.AREA}</td>                                                           
             </tr>
             <tr>
                 <th scope="row">PERIMETER</th>
-                <td>${event.feature.i.PERIMETER}</td>                                                           
+                <td>${event.feature.Fg.PERIMETER}</td>                                                           
             </tr>
             <tr>
                 <th scope="row">HECTARES</th>
-                <td>${event.feature.i.HECTARES}</td>                                                          
+                <td>${event.feature.Fg.HECTARES}</td>                                                          
             </tr>
         
         </tbody>
